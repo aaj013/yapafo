@@ -14,12 +14,12 @@
  */
 class OSM_Auth_OAuth implements OSM_Auth_IAuthProvider {
 
-	const REQUEST_TOKEN_URL = 'http://www.openstreetmap.org/oauth/request_token';
-	const ACCESS_TOKEN_URL = 'http://www.openstreetmap.org/oauth/access_token';
-	const AUTHORIZE_TOKEN_URL = 'http://www.openstreetmap.org/oauth/authorize';
-	const REQUEST_TOKEN_URL_DEV = 'http://api06.dev.openstreetmap.org/oauth/request_token';
-	const ACCESS_TOKEN_URL_DEV = 'http://api06.dev.openstreetmap.org/oauth/access_token';
-	const AUTHORIZE_TOKEN_URL_DEV = 'http://api06.dev.openstreetmap.org/oauth/authorize';
+	const REQUEST_TOKEN_URL = 'https://www.openstreetmap.org/oauth/request_token';
+	const ACCESS_TOKEN_URL = 'https://www.openstreetmap.org/oauth/access_token';
+	const AUTHORIZE_TOKEN_URL = 'https://www.openstreetmap.org/oauth/authorize';
+	const REQUEST_TOKEN_URL_DEV = 'https://api06.dev.openstreetmap.org/oauth/request_token';
+	const ACCESS_TOKEN_URL_DEV = 'https://api06.dev.openstreetmap.org/oauth/access_token';
+	const AUTHORIZE_TOKEN_URL_DEV = 'https://api06.dev.openstreetmap.org/oauth/authorize';
 	const PROTOCOL_VERSION = '1.0';
 	const SIGNATURE_METHOD = 'HMAC-SHA1';
 
@@ -178,7 +178,7 @@ class OSM_Auth_OAuth implements OSM_Auth_IAuthProvider {
 		{
 			$opts = array(
 				'http' => array(
-					'method' => $method, 'user_agent' => 'Yapafo OSM_OAuth http://yapafo.net',
+					'method' => $method,
 					'header' => /* implode("\r\n", $headers) */$headers,
 				)
 			);
@@ -190,7 +190,7 @@ class OSM_Auth_OAuth implements OSM_Auth_IAuthProvider {
 
 			$opts = array(
 				'http' => array(
-					'method' => $method, 'user_agent' => 'Yapafo OSM_OAuth http://yapafo.net',
+					'method' => $method,
 					//'header' => 'Content-type: application/x-www-form-urlencoded',
 					'header' => /* implode("\r\n", $headers) */$headers, 'content' => $postdata
 				)
