@@ -22,10 +22,10 @@ class OSM_Api {
 
 	const VERSION = '0.3';
 	const USER_AGENT = 'http://yapafo.net';
-	const URL_DEV_UK = 'http://api06.dev.openstreetmap.org/api/0.6';
+	const URL_DEV_UK = 'https://api06.dev.openstreetmap.org/api/0.6';
 	//deprecated: const OSMAPI_URL_PROD_PROXY_LETTUFE = 'http://beta.letuffe.org/api/0.6';
-	const URL_PROD_FR = 'http://api.openstreetmap.fr/api/0.6';
-	const URL_PROD_UK = 'http://api.openstreetmap.org/api/0.6';
+	const URL_PROD_FR = 'https://api.openstreetmap.fr/api/0.6';
+	const URL_PROD_UK = 'https://api.openstreetmap.org/api/0.6';
 	const OBJTYPE_NODE = 'node';
 	const OBJTYPE_WAY = 'way';
 	const OBJTYPE_RELATION = 'relation';
@@ -33,15 +33,15 @@ class OSM_Api {
 	/**
 	 * Query form: http://api.openstreetmap.fr/query_form.html
 	 */
-	const OAPI_URL_FR = 'http://api.openstreetmap.fr/oapi/interpreter';
-	const OAPI_URL_RU = 'http://overpass.osm.rambler.ru/';
+	const OAPI_URL_FR = 'https://api.openstreetmap.fr/oapi/interpreter';
+	const OAPI_URL_RU = 'https://overpass.osm.rambler.ru/';
 	//const OAPI_URL_LETUFFE = 'http://overpassapi.letuffe.org/api/interpreter';
-	const OAPI_URL_DE = 'http://www.overpass-api.de/api/interpreter';
+	const OAPI_URL_DE = 'https://www.overpass-api.de/api/interpreter';
 
 	protected $_options = array(
 		// simulation is set by default to avoid (protected against) unwanted write !
 		'simulation' => true,
-		'url' => self::URL_PROD_FR,
+		'url' => self::URL_PROD_UK,
 		'url4Write' => self::URL_PROD_UK,
 		// to store every network communications (load/save) in a file.
 		'outputFolder' => null,
@@ -258,7 +258,7 @@ class OSM_Api {
 			);
 		}
 
-		$context = stream_context_create($opts);
+		$context = NULL; //stream_context_create($opts);
 
 		$this->_stats['requestCount']++;
 
@@ -341,7 +341,6 @@ class OSM_Api {
 		$relativeUrl = $type . '/' . $id . ($full ? '/full' : '' );
 
 		$result = $this->_httpApi($relativeUrl, null, 'GET');
-
 		if (OSM_ZLog::isDebug())
 			OSM_Zlog::debug(__METHOD__, print_r($result, true));
 
